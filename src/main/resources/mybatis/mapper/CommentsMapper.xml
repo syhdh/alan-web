@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alan.mapper.CommentsMapper">
+  <resultMap id="BaseResultMap" type="com.alan.model.Comments">
+    <id column="comments_c_id" jdbcType="VARCHAR" property="cId" />
+    <result column="comments_c_params" jdbcType="VARCHAR" property="cParams" />
+    <result column="comments_c_user_id" jdbcType="VARCHAR" property="cUserId" />
+    <result column="comments_v_user" jdbcType="VARCHAR" property="vUser" />
+    <result column="comments_c_timestmap" jdbcType="VARCHAR" property="cTimestmap" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    comments.c_id as comments_c_id, comments.c_params as comments_c_params, comments.c_user_id as comments_c_user_id, 
+    comments.v_user as comments_v_user, comments.c_timestmap as comments_c_timestmap
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from comments comments
+    where comments.c_id = #{cId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from comments
+    where c_id = #{cId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.alan.model.Comments">
+    insert into comments (c_id, c_params, c_user_id, 
+      v_user, c_timestmap)
+    values (#{cId,jdbcType=VARCHAR}, #{cParams,jdbcType=VARCHAR}, #{cUserId,jdbcType=VARCHAR}, 
+      #{vUser,jdbcType=VARCHAR}, #{cTimestmap,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.alan.model.Comments">
+    insert into comments
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cId != null">
+        c_id,
+      </if>
+      <if test="cParams != null">
+        c_params,
+      </if>
+      <if test="cUserId != null">
+        c_user_id,
+      </if>
+      <if test="vUser != null">
+        v_user,
+      </if>
+      <if test="cTimestmap != null">
+        c_timestmap,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cId != null">
+        #{cId,jdbcType=VARCHAR},
+      </if>
+      <if test="cParams != null">
+        #{cParams,jdbcType=VARCHAR},
+      </if>
+      <if test="cUserId != null">
+        #{cUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="vUser != null">
+        #{vUser,jdbcType=VARCHAR},
+      </if>
+      <if test="cTimestmap != null">
+        #{cTimestmap,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.alan.model.Comments">
+    update comments
+    <set>
+      <if test="cParams != null">
+        c_params = #{cParams,jdbcType=VARCHAR},
+      </if>
+      <if test="cUserId != null">
+        c_user_id = #{cUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="vUser != null">
+        v_user = #{vUser,jdbcType=VARCHAR},
+      </if>
+      <if test="cTimestmap != null">
+        c_timestmap = #{cTimestmap,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where c_id = #{cId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alan.model.Comments">
+    update comments
+    set c_params = #{cParams,jdbcType=VARCHAR},
+      c_user_id = #{cUserId,jdbcType=VARCHAR},
+      v_user = #{vUser,jdbcType=VARCHAR},
+      c_timestmap = #{cTimestmap,jdbcType=VARCHAR}
+    where c_id = #{cId,jdbcType=VARCHAR}
+  </update>
+</mapper>

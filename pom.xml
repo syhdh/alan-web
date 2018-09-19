@@ -1,0 +1,211 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>alan-web</groupId>
+  <artifactId>alan-web</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>1.8</java.version>
+    <spring-cloud.version>Edgware.SR3</spring-cloud.version>
+     <mapper-version>2.3.4</mapper-version>
+		<pagehelper-version>3.7.5</pagehelper-version>
+		<jsqlparser-version>0.9.1</jsqlparser-version>
+  </properties>
+	<parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.5.10.RELEASE</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+  <dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-dependencies</artifactId>
+            <version>${spring-cloud.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+  </dependencyManagement>
+	<dependencies>
+		<!-- servlet依赖. -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+ 
+		<!-- JSTL（JSP Standard TagLibrary，JSP标准标签库)是一个不断完善的开放源代码的JSP标签库，是由apache的jakarta小组来维护的。JSTL只能运行在支持JSP1.2和Servlet2.3规范的容器上，如tomcat 
+			4.x。在JSP2.0中也是作为标准支持的。 不然报异常信息： javax.servlet.ServletException:Circular view 
+			path [/helloJsp]: would dispatch back to the current handler URL[/helloJsp] 
+			again. Check your ViewResolver setup! (Hint: This may be the resultof an 
+			unspecified view, due to default view name generation.) -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+ 
+		<!-- Provided -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+	
+	  <!-- Eureka 客户端 -->
+	  <dependency>
+	   <groupId>org.springframework.cloud</groupId>
+	   <!-- eureka 包含了spring-cloud-starter-ribbon -->
+	   <artifactId>spring-cloud-starter-eureka</artifactId>
+	   <exclusions>
+        <exclusion>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+        </exclusion>
+        <exclusion>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-core</artifactId>
+        </exclusion>
+        <exclusion>
+            <groupId>com.sun.jersey.contribs</groupId>
+            <artifactId>jersey-apache-client4</artifactId>
+        </exclusion>
+      </exclusions>
+	  </dependency>
+	  <!--spring-cloud-starter-eureka 和 spring-cloud-starter-feign 已经引了，所以可引可不引-->
+     <dependency>
+         <groupId>org.springframework.cloud</groupId>
+         <artifactId>spring-cloud-starter-ribbon</artifactId>
+     </dependency>
+     <!-- 引入Feign调用 -->
+	    <dependency>
+	     <groupId>org.springframework.cloud</groupId>
+	     <artifactId>spring-cloud-starter-feign</artifactId>
+	    </dependency>
+	    <!-- 断路器 feign中已经引用，可引可不引 -->
+	    <dependency>
+	      <groupId>org.springframework.cloud</groupId>
+	      <artifactId>spring-cloud-starter-hystrix</artifactId>
+	    </dependency>
+	    <!-- feign 中用Hystrix 报错解决 NoClassDefFoundError HystrixCommandAspect-->
+	    <dependency>
+	        <groupId>com.netflix.hystrix</groupId>
+	        <artifactId>hystrix-javanica</artifactId>
+	    </dependency>
+	  <!-- 引入监控检查 -->
+	  <dependency>
+	   <groupId>org.springframework.boot</groupId>
+	   <artifactId>spring-boot-starter-actuator</artifactId>
+	  </dependency>
+	   <!-- 开发热部署 -->
+	  <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <!-- optional=true,依赖不会传递-->
+        <optional>true</optional>
+    </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!-- 持久化配置 -->
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<!-- springboot分页插件 -->
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper-spring-boot-starter</artifactId>
+      <version>1.2.3</version>
+    </dependency>
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>druid</artifactId>
+		    <version>1.1.9</version>
+		</dependency>
+    
+		<dependency>
+       <groupId>mysql</groupId>
+       <artifactId>mysql-connector-java</artifactId>
+       <scope>runtime</scope>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-redis</artifactId>
+    </dependency>
+    <!-- 测试 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- 安全相关 -->
+		<!-- <dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>	 -->
+    <dependency>
+	    <groupId>io.jsonwebtoken</groupId>
+	    <artifactId>jjwt</artifactId>
+	    <version>0.9.0</version>
+    </dependency>
+    
+    
+    <dependency>
+		    <groupId>com.aliyun.oss</groupId>
+		    <artifactId>aliyun-sdk-oss</artifactId>
+		    <version>2.8.3</version>
+		</dependency>
+	
+	<dependency> 
+            <groupId>org.apache.poi</groupId> 
+            <artifactId>poi-ooxml</artifactId> 
+            <version>3.9</version> 
+        </dependency>
+        
+     <!-- 分页插件依赖 -->
+		<dependency>  
+            <groupId>com.github.pagehelper</groupId>  
+            <artifactId>pagehelper</artifactId>  
+            <version>5.0.0</version>  
+        </dependency>
+        
+     <!-- java mail -->  
+    <dependency>
+        <groupId>com.sun.mail</groupId>
+        <artifactId>javax.mail</artifactId>
+        <version>1.5.4</version>
+    </dependency>
+     <!-- 消息队列 -->
+	<dependency>  
+             <groupId>com.alibaba.rocketmq</groupId>  
+             <artifactId>rocketmq-client</artifactId>  
+             <version>3.2.6</version>  
+    </dependency> 
+	</dependencies>
+	<build>
+		<finalName>alan-web</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+		<!-- 支持打包jsp -->
+	</build>
+	
+</project>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alan.mapper.EmailinfoMapper">
+  <resultMap id="BaseResultMap" type="com.alan.model.Emailinfo">
+    <id column="emailinfo_id" jdbcType="VARCHAR" property="id" />
+    <result column="emailinfo_eventid" jdbcType="VARCHAR" property="eventid" />
+    <result column="emailinfo_senduser" jdbcType="VARCHAR" property="senduser" />
+    <result column="emailinfo_reciveuser" jdbcType="VARCHAR" property="reciveuser" />
+    <result column="emailinfo_sendEmail" jdbcType="VARCHAR" property="sendemail" />
+    <result column="emailinfo_reciveEmail" jdbcType="VARCHAR" property="reciveemail" />
+    <result column="emailinfo_content" jdbcType="VARCHAR" property="content" />
+    <result column="emailinfo_codeurl" jdbcType="VARCHAR" property="codeurl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    emailinfo.id as emailinfo_id, emailinfo.eventid as emailinfo_eventid, emailinfo.senduser as emailinfo_senduser, 
+    emailinfo.reciveuser as emailinfo_reciveuser, emailinfo.sendEmail as emailinfo_sendEmail, 
+    emailinfo.reciveEmail as emailinfo_reciveEmail, emailinfo.content as emailinfo_content, 
+    emailinfo.codeurl as emailinfo_codeurl
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from emailinfo emailinfo
+    where emailinfo.id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from emailinfo
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.alan.model.Emailinfo">
+    insert into emailinfo (id, eventid, senduser, 
+      reciveuser, sendEmail, reciveEmail, 
+      content, codeurl)
+    values (#{id,jdbcType=VARCHAR}, #{eventid,jdbcType=VARCHAR}, #{senduser,jdbcType=VARCHAR}, 
+      #{reciveuser,jdbcType=VARCHAR}, #{sendemail,jdbcType=VARCHAR}, #{reciveemail,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{codeurl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.alan.model.Emailinfo">
+    insert into emailinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="eventid != null">
+        eventid,
+      </if>
+      <if test="senduser != null">
+        senduser,
+      </if>
+      <if test="reciveuser != null">
+        reciveuser,
+      </if>
+      <if test="sendemail != null">
+        sendEmail,
+      </if>
+      <if test="reciveemail != null">
+        reciveEmail,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="codeurl != null">
+        codeurl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="eventid != null">
+        #{eventid,jdbcType=VARCHAR},
+      </if>
+      <if test="senduser != null">
+        #{senduser,jdbcType=VARCHAR},
+      </if>
+      <if test="reciveuser != null">
+        #{reciveuser,jdbcType=VARCHAR},
+      </if>
+      <if test="sendemail != null">
+        #{sendemail,jdbcType=VARCHAR},
+      </if>
+      <if test="reciveemail != null">
+        #{reciveemail,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="codeurl != null">
+        #{codeurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.alan.model.Emailinfo">
+    update emailinfo
+    <set>
+      <if test="eventid != null">
+        eventid = #{eventid,jdbcType=VARCHAR},
+      </if>
+      <if test="senduser != null">
+        senduser = #{senduser,jdbcType=VARCHAR},
+      </if>
+      <if test="reciveuser != null">
+        reciveuser = #{reciveuser,jdbcType=VARCHAR},
+      </if>
+      <if test="sendemail != null">
+        sendEmail = #{sendemail,jdbcType=VARCHAR},
+      </if>
+      <if test="reciveemail != null">
+        reciveEmail = #{reciveemail,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="codeurl != null">
+        codeurl = #{codeurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alan.model.Emailinfo">
+    update emailinfo
+    set eventid = #{eventid,jdbcType=VARCHAR},
+      senduser = #{senduser,jdbcType=VARCHAR},
+      reciveuser = #{reciveuser,jdbcType=VARCHAR},
+      sendEmail = #{sendemail,jdbcType=VARCHAR},
+      reciveEmail = #{reciveemail,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      codeurl = #{codeurl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

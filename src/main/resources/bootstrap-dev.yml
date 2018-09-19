@@ -1,0 +1,16 @@
+server: 
+  port: 8022
+  session: 
+    timeout: 1800 #单位秒，如果涉及界面，可以配置
+  connection-timeout: 10000
+
+##################java mail 配置#########################
+##qq邮箱账号配置
+mail.senduser: 1032624544@qq.com #发件人邮箱
+mail.access: bzlavtimmgktbbhc #发件人授权码
+mail.host: smtp.qq.com #邮件服务器
+
+##网易邮箱账号配置
+#mail.senduser: shaoyanghui_dh@163.com #发件人邮箱
+#mail.access: Dh951209 #发件人授权码
+#mail.host: smtp.163.com #邮件服务器

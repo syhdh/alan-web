@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alan.mapper.RoleUserDAO">
+  <resultMap id="BaseResultMap" type="com.alan.model.RoleUser">
+    <id column="role_user_user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="role_user_user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="role_user_age" jdbcType="INTEGER" property="age" />
+    <result column="role_user_sex" jdbcType="VARCHAR" property="sex" />
+    <result column="role_user_address" jdbcType="VARCHAR" property="address" />
+    <result column="role_user_area" jdbcType="VARCHAR" property="area" />
+    <result column="role_user_importanc" jdbcType="INTEGER" property="importanc" />
+    <result column="role_user_introduce" jdbcType="VARCHAR" property="introduce" />
+    <result column="role_user_login_time" jdbcType="VARCHAR" property="loginTime" />
+    <result column="role_user_login_out" jdbcType="VARCHAR" property="loginOut" />
+    <result column="role_user_login_times" jdbcType="INTEGER" property="loginTimes" />
+    <result column="role_user_login_name" jdbcType="VARCHAR" property="loginName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    role_user.user_id as role_user_user_id, role_user.user_name as role_user_user_name, 
+    role_user.age as role_user_age, role_user.sex as role_user_sex, role_user.address as role_user_address, 
+    role_user.area as role_user_area, role_user.importanc as role_user_importanc, role_user.introduce as role_user_introduce, 
+    role_user.login_time as role_user_login_time, role_user.login_out as role_user_login_out, 
+    role_user.login_times as role_user_login_times, role_user.login_name as role_user_login_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from role_user role_user
+    where role_user.user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from role_user
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.alan.model.RoleUser">
+    insert into role_user (user_id, user_name, age, 
+      sex, address, area, 
+      importanc, introduce, login_time, 
+      login_out, login_times, login_name
+      )
+    values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
+      #{sex,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
+      #{importanc,jdbcType=INTEGER}, #{introduce,jdbcType=VARCHAR}, #{loginTime,jdbcType=VARCHAR}, 
+      #{loginOut,jdbcType=VARCHAR}, #{loginTimes,jdbcType=INTEGER}, #{loginName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.alan.model.RoleUser">
+    insert into role_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="importanc != null">
+        importanc,
+      </if>
+      <if test="introduce != null">
+        introduce,
+      </if>
+      <if test="loginTime != null">
+        login_time,
+      </if>
+      <if test="loginOut != null">
+        login_out,
+      </if>
+      <if test="loginTimes != null">
+        login_times,
+      </if>
+      <if test="loginName != null">
+        login_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="importanc != null">
+        #{importanc,jdbcType=INTEGER},
+      </if>
+      <if test="introduce != null">
+        #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null">
+        #{loginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="loginOut != null">
+        #{loginOut,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTimes != null">
+        #{loginTimes,jdbcType=INTEGER},
+      </if>
+      <if test="loginName != null">
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.alan.model.RoleUser">
+    update role_user
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="importanc != null">
+        importanc = #{importanc,jdbcType=INTEGER},
+      </if>
+      <if test="introduce != null">
+        introduce = #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null">
+        login_time = #{loginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="loginOut != null">
+        login_out = #{loginOut,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTimes != null">
+        login_times = #{loginTimes,jdbcType=INTEGER},
+      </if>
+      <if test="loginName != null">
+        login_name = #{loginName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alan.model.RoleUser">
+    update role_user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      importanc = #{importanc,jdbcType=INTEGER},
+      introduce = #{introduce,jdbcType=VARCHAR},
+      login_time = #{loginTime,jdbcType=VARCHAR},
+      login_out = #{loginOut,jdbcType=VARCHAR},
+      login_times = #{loginTimes,jdbcType=INTEGER},
+      login_name = #{loginName,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alan.mapper.UserDAO">
+  <resultMap id="BaseResultMap" type="com.alan.model.User">
+    <id column="user_userid" jdbcType="VARCHAR" property="userid" />
+    <result column="user_password" jdbcType="VARCHAR" property="password" />
+    <result column="user_nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="user_sex" jdbcType="INTEGER" property="sex" />
+    <result column="user_age" jdbcType="INTEGER" property="age" />
+    <result column="user_profilehead" jdbcType="VARCHAR" property="profilehead" />
+    <result column="user_profile" jdbcType="VARCHAR" property="profile" />
+    <result column="user_firsttime" jdbcType="VARCHAR" property="firsttime" />
+    <result column="user_lasttime" jdbcType="VARCHAR" property="lasttime" />
+    <result column="user_status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user.userid as user_userid, user.`password` as `user_password`, user.nickname as user_nickname, 
+    user.sex as user_sex, user.age as user_age, user.profilehead as user_profilehead, 
+    user.profile as user_profile, user.firsttime as user_firsttime, user.lasttime as user_lasttime, 
+    user.`status` as `user_status`
+  </sql>
+  <!-- findByNameAndPassword 验证用户登录 -->
+  <select id="findByNameAndPassword" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user user
+    where user.nickname = #{nickname,jdbcType=VARCHAR} and user.`password` = #{password,jdbcType=VARCHAR}
+  </select>
+  
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user user
+    where user.userid = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where userid = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.alan.model.User">
+    insert into user (userid, `password`, nickname, 
+      sex, age, profilehead, 
+      profile, firsttime, lasttime, 
+      `status`)
+    values (#{userid,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}, #{profilehead,jdbcType=VARCHAR}, 
+      #{profile,jdbcType=VARCHAR}, #{firsttime,jdbcType=VARCHAR}, #{lasttime,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.alan.model.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="profilehead != null">
+        profilehead,
+      </if>
+      <if test="profile != null">
+        profile,
+      </if>
+      <if test="firsttime != null">
+        firsttime,
+      </if>
+      <if test="lasttime != null">
+        lasttime,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="profilehead != null">
+        #{profilehead,jdbcType=VARCHAR},
+      </if>
+      <if test="profile != null">
+        #{profile,jdbcType=VARCHAR},
+      </if>
+      <if test="firsttime != null">
+        #{firsttime,jdbcType=VARCHAR},
+      </if>
+      <if test="lasttime != null">
+        #{lasttime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.alan.model.User">
+    update user
+    <set>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="profilehead != null">
+        profilehead = #{profilehead,jdbcType=VARCHAR},
+      </if>
+      <if test="profile != null">
+        profile = #{profile,jdbcType=VARCHAR},
+      </if>
+      <if test="firsttime != null">
+        firsttime = #{firsttime,jdbcType=VARCHAR},
+      </if>
+      <if test="lasttime != null">
+        lasttime = #{lasttime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where userid = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alan.model.User">
+    update user
+    set `password` = #{password,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      age = #{age,jdbcType=INTEGER},
+      profilehead = #{profilehead,jdbcType=VARCHAR},
+      profile = #{profile,jdbcType=VARCHAR},
+      firsttime = #{firsttime,jdbcType=VARCHAR},
+      lasttime = #{lasttime,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=INTEGER}
+    where userid = #{userid,jdbcType=VARCHAR}
+  </update>
+</mapper>
