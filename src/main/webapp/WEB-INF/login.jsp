@@ -22,7 +22,6 @@
             window.top.location = window.location;
         }
         $(function(){
-        	setInterval(music,10000)
         	$("#login").click(function(){
 				var name = $("#name").val();
 				var password = $("#password").val();
@@ -39,16 +38,6 @@
 			})
         });
         })
-        
-        function music(){
-        	var audio = document.getElementById('music'); 
-       	 if(audio!==null){             
-       	    //检测播放是否已暂停.audio.paused 在播放器播放时返回false.
-       	  if(audio.paused){          
-       	      audio.play();//audio.play();// 这个就是播放  
-       	  }
-       	 } 
-        }
     </script>
 </head>
 <body class="signin">
@@ -88,7 +77,5 @@
             </div>
         </div>
     </div>
-    <audio style="hidden:true;z-index:100;opacity:0;position:absoulte;" src="<%=path %>/music/Pianoboy高至豪 - The truth that you leave.mp3" controls="controls" preload id="music">
 </body>
-
 </html>

@@ -1,7 +1,5 @@
 package com.alan.web;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.security.GeneralSecurityException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,8 +17,6 @@ import com.alan.common.utils.SendMailAcceUtils;
 import com.alan.common.utils.StringUtil;
 import com.alan.model.Emailinfo;
 import com.alan.service.EmailInfoManager;
-
-import io.netty.handler.codec.string.StringEncoder;
 
 @Controller
 @RequestMapping("/sendCode")

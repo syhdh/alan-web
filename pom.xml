@@ -196,6 +196,18 @@
              <artifactId>rocketmq-client</artifactId>  
              <version>3.2.6</version>  
     </dependency> 
+    
+    <!--腾讯cos-->
+        <dependency>
+            <groupId>com.qcloud</groupId>
+            <artifactId>cos_api</artifactId>
+            <version>3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
 	</dependencies>
 	<build>
 		<finalName>alan-web</finalName>
