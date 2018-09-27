@@ -26,7 +26,7 @@
 	<div class="top-bar container-fluid">
 		<div class="actions">
 			<a class="btn hidden-xs" href="mailto:someone@example.com"><i class="fa fa-paper-plane" aria-hidden="true"></i><img src = "<%=path %>/img/email.jpg" style="height:20px;weight:22px;"/></a>
-			<a class="btn" href="https://np-alan.oss-cn-hangzhou.aliyuncs.com/%E4%B8%AA%E4%BA%BA%E8%B5%84%E6%96%99/developer.pdf"><i class="fa fa-download" aria-hidden="true"></i>我的简历</a>
+			<a class="btn" href="https://np-alan.oss-cn-hangzhou.aliyuncs.com/%E4%B8%AA%E4%BA%BA%E8%B5%84%E6%96%99/%E9%82%B5%E6%9D%A8%E8%BE%89-java%E5%90%8E%E7%AB%AF-1%E5%B9%B4.pdf"><i class="fa fa-download" aria-hidden="true"></i>我的简历</a>
 		</div><!--//actions-->
 		<ul class="social list-inline">
 			<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
@@ -176,7 +176,7 @@
 						<h4 class="skill-name">DB &amp; Angular</h4>
 						<div class="level">learner, 1 year</div>
 						<div class="desc">
-							熟悉关系型数据库Mysql，熟悉菲关系型数据库Couchabse、redis、Mongodb；熟悉常用sql性能调优；熟悉Linux系统，掌握常用命令，熟悉阿里系列相关服务
+							熟悉关系型数据库Mysql，熟悉非关系型数据库Couchabse、redis、Mongodb；熟悉常用sql性能调优；熟悉Linux系统，掌握常用命令，熟悉阿里系列相关服务
 						</div>
 					</div><!--//item-inner-->
 				</div><!--//item-->
@@ -219,7 +219,7 @@
 				<div class="item active">
 					<blockquote class="quote">      
 						<i class="fa fa-quote-left"></i>                            
-						<p>James is an excellent software engineer and he is passionate about what he does. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse porttitor metus eros.</p>
+						<p>感谢我的项目经理和小组长对我的关照，项目经理对项目管理的严格要求是我这份工作中收获最大的，直至此时，我任清晰的记得我的领导在每一次code review时所说的，同时小组长在技术上不遗余力的指导我，开发团队的氛围很轻松，但关键之处丝毫不见马虎，感谢这段在富金通的日子，感谢遇见你们</p>
 					</blockquote>    
 					<div class="source">
 						<div class="name">富金通金融信息服务(上海)有限公司</div>
@@ -229,7 +229,7 @@
 				<div class="item">
 					<blockquote class="quote">
 						<p><i class="fa fa-quote-left"></i>
-						Sed massa leo, aliquet non velit eu, volutpat vulputate odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse porttitor metus eros, ut fringilla nulla auctor a.</p>
+						在离职之初也没想过自己会来南京，当时首先拿到的是烽火的邀请，但经过仔细考虑之后，还是选择了新丽华，公司虽然是家传统行业的企业，但正走在互联网转型的路上，领导们都很亲切，能力很强，尤其是阿里技术顾问（也是我选择这家公司的初衷），在项目开发及系统设计过程中的指导将是我提升自身的最大的支持</p>
 					</blockquote>
 					<div class="source">
 						<div class="name">新丽华企业集团</div>
@@ -254,7 +254,7 @@
 	
 	
 	<section id="portfolio-section" class="portfolio-section section">
-		<h2 class="section-title">Portfolio</h2>
+		<h2 class="section-title">Portfolio（未完善，请勿点击）</h2>
 		<ul id="filters" class="filters clearfix">
 			<li class="type active" data-filter="*">All</li>
 			<li class="type" data-filter=".backend">Back-end</li>
@@ -380,11 +380,10 @@
 				<p>目前就职于 南京新丽华企业集团-互联网新业务公司-研发部</p>
 				<p><strong>工作内容:</strong></p>
 				<ul class="list-unstyled service-list">
-					<li><i class="fa fa-check" aria-hidden="true"></i> App development with ReactJS</li>
-					<li><i class="fa fa-check" aria-hidden="true"></i> Front-end development with AngularJS</li>
-					<li><i class="fa fa-check" aria-hidden="true"></i> Back-end development with Django/Python</li>
-					<li><i class="fa fa-check" aria-hidden="true"></i> UI development</li>
-					<li><i class="fa fa-check" aria-hidden="true"></i> UX prototyping</li>
+					<li><i class="fa fa-check" aria-hidden="true"></i> 主要负责米筑网php项目重构</li>
+					<li><i class="fa fa-check" aria-hidden="true"></i> 基于couchbase进行java项目开发，同时明确couchbase的优缺点，提出解决方案</li>
+					<li><i class="fa fa-check" aria-hidden="true"></i> 帮助php工程师转型</li>
+					<li><i class="fa fa-check" aria-hidden="true"></i> 参与系统设计</li>
 				</ul>
 				<p>联系邮箱 <a href="mailto:shaoyanghui_dh@163.com">shaoyanghui_dh@163.com</a>  &nbsp;&nbsp;&nbsp;联系电话 <a href="tel:17681337003">17681337003</a></p>
 				<ul class="social list-inline">
