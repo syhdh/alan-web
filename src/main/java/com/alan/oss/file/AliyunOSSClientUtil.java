@@ -9,7 +9,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,6 +31,8 @@ import com.alan.service.OssFileManager;
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.model.Bucket;
 import com.aliyun.oss.model.OSSObject;
+import com.aliyun.oss.model.OSSObjectSummary;
+import com.aliyun.oss.model.ObjectListing;
 import com.aliyun.oss.model.ObjectMetadata;
 import com.aliyun.oss.model.PutObjectResult;
 
@@ -73,14 +77,14 @@ public class AliyunOSSClientUtil {
 	 */
 	public String createBucketName(OSSClient ossClient, String bucketName) {
 		// 存储空间
-		final String bucketNames = bucketName;
 		if (!ossClient.doesBucketExist(bucketName)) {
 			// 创建存储空间
 			Bucket bucket = ossClient.createBucket(bucketName);
-			logger.info("创建存储空间成功");
+			logger.info("创建存储空间成功，bucket名称："+bucketName);
 			return bucket.getName();
 		}
-		return bucketNames;
+		logger.info(bucketName+"：该bucket已存在，请重试");
+		return "false";
 	}
 
 	/**
@@ -90,6 +94,7 @@ public class AliyunOSSClientUtil {
 	 */
 	public void deleteBucket(OSSClient ossClient, String bucketName) {
 		ossClient.deleteBucket(bucketName);
+		//从数据库中删除
 		logger.warn("删除" + bucketName + "Bucket成功");
 	}
 
@@ -127,6 +132,27 @@ public class AliyunOSSClientUtil {
 		ossClient.deleteObject(bucketName, key);
 		logger.info("删除" + bucketName + "下的文件" + key + "成功");
 	}
+	
+	/**
+	 * 删除一个Bucket和其中的Objects
+	 * @param client  OSSClient对象
+	 * @param bucketName  Bucket名
+	 * @throws OSSException
+	 * @throws ClientException
+	 */
+	public static void deleteBucketAndFiles(OSSClient client, String bucketName) throws Exception{
+	    ObjectListing objectListing = client.listObjects(bucketName);
+	    List<OSSObjectSummary> listDeletes = objectListing.getObjectSummaries();
+	    for(int i = 0; i < listDeletes.size(); i++){
+	        String objectName = listDeletes.get(i).getKey();
+	        logger.info("删除:"+ "objectName = " + objectName);
+	        //如果不为空，先删除bucket下的文件
+	        client.deleteObject(bucketName, objectName);
+	    }
+	    client.deleteBucket(bucketName);
+	}
+
+	
 
 	/**
 	 * 上传图片至OSS 文件流
@@ -224,7 +250,6 @@ public class AliyunOSSClientUtil {
 
 	/**
 	 * 上传图片至OSS 文件流 表单提交方式上传
-	 * 
 	 * @param ossClient  oss连接
 	 * @param MultipartFile 上传文件
 	 * @param bucketName   存储空间
@@ -347,6 +372,24 @@ public class AliyunOSSClientUtil {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	
+	/**
+	 * 查询bucket下所有文件
+	 * @param client oss对象
+	 * @param bucketName bucket
+	 * @return list<String> 文件key集合
+	 */
+	public List<String> getOssFiles(OSSClient client, String bucketName){
+		 ObjectListing objectListing = client.listObjects(bucketName);
+		 List<OSSObjectSummary> listDeletes = objectListing.getObjectSummaries();
+		 List<String> urlList = new ArrayList<String>();
+		 for (int i = 0; i < listDeletes.size(); i++) {
+			 String key = listDeletes.get(i).getKey();
+			 urlList.add(key);
+		 }
+		return urlList;
 	}
 
 	// 上传本地文件
