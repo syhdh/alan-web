@@ -40,16 +40,8 @@ String path = request.getContextPath();
 <script type="text/javascript" src="<%=path %>/js/jquery.js" charset="utf-8"></script>  
 
   
-<span style="color:#ff6666;"><!-- 新 Bootstrap 核心 CSS 文件 -->  
 <%-- <link rel="stylesheet" href="${js}/bootstrap/css/bootstrap.min.css">   --%>
 <!-- 可选的Bootstrap主题文件（一般不用引入） -->  
 <%-- <link rel="stylesheet" href="${js}/bootstrap/css/bootstrap-theme.min.css">   --%>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->  
-<head>
-<meta http-equiv="Content-Type" content="text/html; utf-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
 </html>

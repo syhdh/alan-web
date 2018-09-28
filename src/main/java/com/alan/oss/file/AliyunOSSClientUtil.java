@@ -225,7 +225,7 @@ public class AliyunOSSClientUtil {
 			e.printStackTrace();
 			deleteFile(ossClient, bucketName, fileName);
 			logger.error("上传阿里云OSS服务器异常." + e.getMessage(), e);
-			logger.warn("发生错误，已删除" + bucketName + "下的文件" + fileName);
+			logger.warn("发生错误，已删除bucket：" + bucketName + "下的文件:" + fileName);
 			responseData = new ResponseData(ResponseCode.ERROR);
 		}
 		return responseData;
@@ -238,7 +238,7 @@ public class AliyunOSSClientUtil {
 	 */
 	public String getUrl(OSSClient ossClient, String bucketName, String fileName) {
 		// 设置URL过期时间为10年 3600l* 1000*24*365*10
-		Date expiration = new Date(new Date().getTime() + 3600 * 1000 * 2);
+		Date expiration = new Date(new Date().getTime() + 3600 * 1000 * 1);
 		// 生成URL
 		URL url = ossClient.generatePresignedUrl(bucketName, fileName, expiration);
 		if (url != null) {
