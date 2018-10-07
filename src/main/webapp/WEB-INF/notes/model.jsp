@@ -85,7 +85,7 @@
 					<div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>上海</div>
 				</div>
 				<div class="job-meta">
-					<div class="title">初级软件工程师</div>
+					<div class="title">初级软件工程师--java-web</div>
 					<div class="time">2017年9月 &nbsp;至&nbsp;2018年7月</div>
 				</div><!--//job-meta-->
 				<div class="job-desc">
@@ -104,7 +104,7 @@
 					<div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>南京</div>
 				</div>
 				<div class="job-meta">
-					<div class="title">软件工程师</div>
+					<div class="title">软件工程师---服务器端</div>
 					<div class="time">2018年7月&nbsp;至今</div>
 				</div><!--//job-meta-->
 				<div class="job-desc">
