@@ -9,7 +9,7 @@ server:
 mail.senduser: 1032624544@qq.com #发件人邮箱
 mail.access: bzlavtimmgktbbhc #发件人授权码
 mail.host: smtp.qq.com #邮件服务器
-
+ 
 ##网易邮箱账号配置
 #mail.senduser: shaoyanghui_dh@163.com #发件人邮箱
 #mail.access: Dh951209 #发件人授权码
