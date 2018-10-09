@@ -66,7 +66,7 @@ public class SessionFilter implements Filter {
      */
     public boolean isNeedFilter(String uri) {
         for (String includeUrl : includeUrls) {
-            if(uri.contains(includeUrl)||uri.lastIndexOf("/")>=0) {
+            if(uri.contains(includeUrl)||uri.equals("/")) {
                 return true;
             }
         }

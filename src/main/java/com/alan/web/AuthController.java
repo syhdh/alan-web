@@ -16,6 +16,7 @@ import com.alan.common.utils.StringUtil;
 import com.alan.model.User;
 import com.alan.service.UserManager;
 
+
 @Controller
 public class AuthController {
 	
@@ -30,6 +31,7 @@ public class AuthController {
 	}
 	
 	@PostMapping("/check")
+	@ResponseBody
 	public String checkUser(@RequestParam("name")String name,@RequestParam("password")String password) {
 		User user = userManager.checkUser(name, password);
 		if (null==user) {

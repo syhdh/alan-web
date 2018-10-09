@@ -32,7 +32,7 @@
 						data:{"name":name,"password":password},
 						success: function(data){
 								if(data!='error'){
-									location.href="/index";
+									location.href="/main/index";
 						}
 				}
 			})
